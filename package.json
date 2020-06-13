@@ -3,7 +3,6 @@
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
-    "deploy": "bash deploy.sh",
     "editFm": "node utils/editFrontmatter.js"
   },
   "license": "MIT",
