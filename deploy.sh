@@ -32,11 +32,14 @@ echo 'bilent.top' > CNAME  # 自定义域名
 if [ -z "$MAYUN_TOKEN" ]; then  # -z 字符串 长度为0则为true；$MAYUN_TOKEN来自于github仓库`Settings/Secrets`设置的私密环境变量
   mayunUrl=git@gitee.com:lixiaoming888888/web-blog.git
 else
-  mayunUrl=https://gitee.com/lixiaoming888888/web-blog.git
+  # mayunUrl=https://gitee.com/lixiaoming888888/web-blog.git
+  mayunUrl=https://lixiaoming888888:${MAYUN_TOKEN}@gitee.com/lixiaoming888888/web-blog.git
+  git config --global user.name "lixiaoming"
+  git config --global user.email "1404241558@qq.com"
 fi
 git add -A
 git commit -m "${msg}"
-git push -f $mayunUrl master # 推送到码云
+git push -f $mayunUrl master:gh-pages # 推送到码云
 
 cd - # 退回开始所在目录
 rm -rf docs/.vuepress/dist
