@@ -3,7 +3,7 @@ const nav = require("./config/nav.js")
 module.exports = {
   title: "Mr.bilent",
   description: "前端博客，web学习与总结。JavaScript、ES6、TypeScript、Vue、CSS3、HTML5、Node、Git、工具类等技术文章。", // 描述,以 <meta> 标签渲染到页面html中
-  // base: '/vuepress-theme-vdoing/', // '/<github仓库名>/'， 默认'/'
+  base: '/web-blog/', // '/<github仓库名>/'， 默认'/'
   head: [
     // 注入到页面<head> 中的标签，格式[tagName, { attrName: attrValue }, innerHTML?]
     ["link", { rel: "icon", href: "/img/favicon.ico" }], //favicons，资源放在public文件夹
