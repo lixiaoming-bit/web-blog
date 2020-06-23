@@ -95,7 +95,9 @@ export default {
   created() {
     this.setPosts()
   },
-  mounted() {},
+  mounted() {
+    // this.postListOffsetTop = this.getElementToPageTop(this.$refs.postList) - 240
+  },
   watch: {
     currentPage() {
       if (this.$route.query.p != this.currentPage) {
@@ -134,7 +136,7 @@ export default {
       }
 
       this.sortPosts = posts.slice((currentPage - 1) * perPage, currentPage * perPage)
-    },
+    }
     // getElementToPageTop(el) {
     //   if(el && el.parentElement) {
     //     return this.getElementToPageTop(el.parentElement) + el.offsetTop
@@ -172,6 +174,7 @@ export default {
           color $accentColor
       h2
         margin .5rem 0
+        font-size 1.4rem
         border none
         a
           @media (max-width: $MQMobile)
@@ -198,6 +201,7 @@ export default {
       overflow hidden
       .excerpt
         margin-bottom .3rem
+        font-size 0.92rem
         h1,h2,h3
           display none
         img

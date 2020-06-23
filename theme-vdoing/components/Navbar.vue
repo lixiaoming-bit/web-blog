@@ -1,18 +1,19 @@
+components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox, Github },
 <template>
   <header class="navbar blur">
     <div class="nav">
       <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')" />
-      <router-link :to="$localePath">
-        <div class="home-link">
+      <div class="navlist">
+        <router-link :to="$localePath" class="home-link">
           <img class="logo" v-if="$site.themeConfig.logo" :src="$withBase($site.themeConfig.logo)" :alt="$siteTitle" />
           <span ref="siteName" class="site-name" v-if="$siteTitle" :class="{ 'can-hide': $site.themeConfig.logo }">{{
             $siteTitle
           }}</span>
-          <div class="navList">
-            <NavLinks class="can-hide" />
-          </div>
+        </router-link>
+        <div class="navList">
+          <NavLinks class="can-hide" />
         </div>
-      </router-link>
+      </div>
       <div class="links">
         <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algolia" />
         <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false" />
@@ -26,6 +27,7 @@
 import AlgoliaSearchBox from '@AlgoliaSearchBox'
 import SearchBox from '@SearchBox'
 import Github from '@theme/components/Github.vue'
+
 import SidebarButton from '@theme/components/SidebarButton.vue'
 import NavLinks from '@theme/components/NavLinks.vue'
 
@@ -94,6 +96,7 @@ $navbar-horizontal-padding = 1.5rem
     margin auto
     padding $navbar-vertical-padding $navbar-horizontal-padding
     max-width $homePageWidth
+    // position relative
   a, span, img
     display inline-block
   .logo
@@ -107,12 +110,13 @@ $navbar-horizontal-padding = 1.5rem
     color var(--textColor)
     position relative
   .links
+    padding-left 1.5rem
     box-sizing border-box
     white-space nowrap
     font-size 0.9rem
     position relative
     display inline-block
-    float: right;
+    float: right
     .search-box
       flex: 0 0 auto
       vertical-align top
@@ -128,9 +132,9 @@ $navbar-horizontal-padding = 1.5rem
 .hide-navbar
     .navbar
       transform translateY(-100%)
-
 // 鼠标移入logo展示导航
 .navList
+  z-index 100
   padding 30px
   border-top 1px solid #eee
   position absolute
@@ -146,6 +150,9 @@ $navbar-horizontal-padding = 1.5rem
 .home-link
   display inline-block
   height $navbarHeight - $navbar-vertical-padding
+
+.navlist
+  display inline-block
   &:hover .navList
     display block
     min-height 300px

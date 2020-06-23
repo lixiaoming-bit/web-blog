@@ -3,18 +3,17 @@
     <router-link to="/categories/" class="title iconfont icon-wenjianjia" title="全部分类">
       {{ length === 'all' ? '全部分类' : '文章分类' }}
     </router-link>
-
     <div class="categories">
       <router-link
         :to="`/categories/?category=${item.key}`"
         v-for="(item, index) in categories"
         :key="index"
-        :class="{active: item.key === category}"
+        :class="{ active: item.key === category }"
       >
-        {{item.key}}
-        <span>{{item.length}}</span>
+        {{ item.key }}
+        <span>{{ item.length }}</span>
       </router-link>
-      <router-link to="/categories/" v-if="length !== 'all'">
+      <router-link to="/categories/" v-if="length !== 'all' && length < categoriesData.length" class="more">
         更多...
       </router-link>
     </div>
@@ -49,34 +48,54 @@ export default {
 }
 </script>
 
-<style lang='stylus'>
-.categories-wrapper 
+<style lang="stylus">
+.categories-wrapper
   .title
-    color $accentColor
+    color var(--textColor)
+    opacity 0.9
     font-size 1.2rem
   .categories
     margin-top .6rem
     a
       display block
-      padding .32rem .25rem .32rem 0
+      padding .45rem .3rem
       color var(--textColor)
       opacity .8
       font-size .95rem
+      line-height .95rem
       position relative
       transition all .3s
-      border-bottom 1px dashed  #dddddd
-      @media (max-width: $MQMobile) 
+      border-bottom 1px solid var(--borderColor)
+      margin-top -1px
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      @media (max-width: $MQMobile)
         font-weight 400
+      &.more
+        color $accentColor
       &:hover
         color $accentColor
-        border-bottom-color $accentColor
         padding-left .4rem
-      span 
-        float right 
+        span
+          opacity .8
+      span
+        float right
+        background-color var(--textColor)
+        color var(--mainBg)
+        border-radius 2px
+        padding 0 .1rem
+        min-width 1rem
+        height 1rem
+        line-height 1rem
+        font-size .65rem
+        text-align center
+        opacity .6
+        transition opacity .3s
       &.active
-        border-bottom-color $accentColor
         background $accentColor
         color var(--mainBg)
         padding-left .8rem
-        border-radius 3px
+        border-radius 1px
+        border-color transparent
 </style>

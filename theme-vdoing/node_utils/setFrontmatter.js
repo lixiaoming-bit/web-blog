@@ -6,6 +6,7 @@ const chalk = require('chalk') // 命令行打印美化
 const readFileList = require('./modules/readFileList');
 const { type, repairDate, dateFormat} = require('./modules/fn');
 const log = console.log
+const path = require('path');
 
 const PREFIX = '/pages/'
 
@@ -108,7 +109,7 @@ function getCategories(file, categoryText) {
   let categories = []
 
   if (file.filePath.indexOf('_posts') === -1) { // 不在_posts文件夹
-    const filePathArr = file.filePath.split('\\')
+    const filePathArr = file.filePath.split(path.sep) // path.sep用于兼容不同系统下的路径斜杠
     const c = filePathArr[filePathArr.length - 3].split('.').pop() // 获取分类1
     if (c !== 'docs') {
       categories.push(c)
@@ -122,7 +123,7 @@ function getCategories(file, categoryText) {
 
 // 定义永久链接数据
 function getPermalink() {
-  return `${PREFIX + (Math.random() + Math.random()).toString(16).slice(2, 8)}`
+  return `${PREFIX + (Math.random() + Math.random()).toString(16).slice(2, 8)}/`
 }
 
 

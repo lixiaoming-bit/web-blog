@@ -131,6 +131,7 @@ export default {
     .dropdown-item
       color inherit
       line-height 1.7rem
+      background-color #ffffff
       h5
         padding 10px 0
         margin 0

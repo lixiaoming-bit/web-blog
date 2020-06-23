@@ -3,7 +3,7 @@ const nav = require("./config/nav.js")
 module.exports = {
   title: "Mr.bilent",
   description: "前端博客，web学习与总结。JavaScript、ES6、TypeScript、Vue、CSS3、HTML5、Node、Git、工具类等技术文章。", // 描述,以 <meta> 标签渲染到页面html中
-  base: '/web-blog/', // '/<github仓库名>/'， 默认'/'
+  // base: '/web-blog/', // '/<github仓库名>/'， 默认'/'
   head: [
     // 注入到页面<head> 中的标签，格式[tagName, { attrName: attrValue }, innerHTML?]
     ["link", { rel: "icon", href: "/img/favicon.ico" }], //favicons，资源放在public文件夹
@@ -15,10 +15,7 @@ module.exports = {
       },
     ],
     ["meta", { name: "baidu-site-verification", content: "31bCMF4YDC" }], // 百度统计博主验证
-    ["meta", { name: "theme-color", content: "#11a8cd" }], // 移动浏览器主题颜色
-    ['script', { type: 'text/javascript', src: 'https://cdn.jsdelivr.net/gh/bmob/hydrogen-js-sdk@2.2.3/dist/Bmob-2.2.3.min.js' }]
-    // 不蒜子访问量统计
-    // ['script', { src: '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async: 'async'}]
+    ["meta", { name: "theme-color", content: "#11a8cd" }] // 移动浏览器主题颜色
   ],
   markdown: {
     lineNumbers: true, // 代码行号
@@ -29,7 +26,7 @@ module.exports = {
     // 主题配置
     nav,
     sidebarDepth: 2, // 侧边栏显示深度，默认1，最大2（显示到h3标题）
-    logo: "/img/EB-logo.png", // 导航栏logo
+    logo: "/img/logo.png", // 导航栏logo
     repo: "https://github.com/lixiaoming-bit", // 导航栏右侧生成Github链接
     searchMaxSuggestions: 10, // 搜索结果显示最大数
     lastUpdated: "上次更新", // 更新的时间，及前缀文字   string | boolean (取值为git提交时间)
@@ -42,11 +39,7 @@ module.exports = {
     // tag: false, // 是否打开标签功能，默认true。 如打开，会做的事情有：1. 自动生成的frontmatter包含标签字段 2.页面中显示与标签相关的信息和模块 3.自动生成标签页面（在@pages文件夹）。如关闭，则反之。
     // archive: false, // 是否打开归档功能，默认true。 如打开，会做的事情有：1.自动生成归档页面（在@pages文件夹）。如关闭，则反之。
     // categoryText: '随笔', // 碎片化文章（_posts文件夹的文章）预设生成的分类值，默认'随笔'
-    // bodyBgImg: [
-    //   'https://cdn.jsdelivr.net/gh/xugaoyi/image_store/blog/20200507175828.jpeg',
-    //   'https://cdn.jsdelivr.net/gh/xugaoyi/image_store/blog/20200507175845.jpeg',
-    //   'https://cdn.jsdelivr.net/gh/xugaoyi/image_store/blog/20200507175846.jpeg'
-    // ], // body背景大图，默认无。 单张图片 String || 多张图片 Array, 多张图片时每隔15秒换一张。
+    // bodyBgImg: [], // body背景大图，默认无。 单张图片 String || 多张图片 Array, 多张图片时每隔15秒换一张。
     // titleBadge: false, // 文章标题前的图标是否显示，默认true
     // titleBadgeIcons: [ // 文章标题前图标的地址，默认主题内置图标
     //   '图标地址1',

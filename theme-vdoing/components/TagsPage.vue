@@ -17,7 +17,7 @@
           :perPage="perPage"
           :currentPage="currentPage"
           @getCurrentPage="handlePagination"
-          v-if="Math.ceil(total / perPage) > 1"
+          v-show="Math.ceil(total / perPage) > 1"
         />
       </template>
       <template #mainRight>
@@ -47,11 +47,12 @@ export default {
     }
   },
   components: { MainLayout, PostList, Pagination, TagsBar },
-  beforeMount() {
-    const tag = this.$route.query.tag
-    if (tag) {
-      this.tag = tag
-      this.total = this.$groupPosts.tags[tag].length
+  mounted() {
+    const queryTag = this.$route.query.tag
+    
+    if (queryTag) {
+      this.tag = queryTag
+      this.total = this.$groupPosts.tags[queryTag].length
     } else {
       this.total = this.$sortPosts.length
     }

@@ -1,5 +1,3 @@
-## package 注释的东西
-"baiduPush": "node utils/baiduPush.js https://xugaoyi.com && bash baiduPush.sh"
 
 ```shell
 # ## 利用GitHub Actions每天定时给百度推送链接，提高收录率 ##

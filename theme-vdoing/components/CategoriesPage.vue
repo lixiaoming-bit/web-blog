@@ -17,7 +17,7 @@
           :perPage="perPage"
           :currentPage="currentPage"
           @getCurrentPage="handlePagination"
-          v-if="Math.ceil(total / perPage) > 1"
+          v-show="Math.ceil(total / perPage) > 1"
         />
       </template>
       <template #mainRight>
@@ -47,25 +47,24 @@ export default {
     }
   },
   components: { MainLayout, PostList, Pagination, CategoriesBar },
-  beforeMount() {
-    const category = this.$route.query.category
-    if (category) {
-      this.category = category
-      this.total = this.$groupPosts.categories[category].length
+  mounted() {
+    const queryCategory = this.$route.query.category
+    if (queryCategory) {
+      this.category = queryCategory
+      this.total = this.$groupPosts.categories[queryCategory].length
     } else {
       this.total = this.$sortPosts.length
     }
     if (this.$route.query.p) {
       this.currentPage = Number(this.$route.query.p)
     }
-  },
-  mounted() {
-    // 增强用户体验
+
+    // 滚动条定位到当前分类（增强用户体验）
     const cateEl = document.querySelector('.categories')
     if (cateEl) {
-      const activeEl = cateEl.querySelector('.active')
-      const topVal = activeEl ? activeEl.offsetTop : 0
       setTimeout(() => {
+        const activeEl = cateEl.querySelector('.active')
+        const topVal = activeEl ? activeEl.offsetTop : 0
         cateEl.scrollTo({ top: topVal, behavior: 'smooth' })
       }, 300)
     }
@@ -129,5 +128,5 @@ export default {
       @media (max-width: $MQMobile)
         display block
       .categories
-        max-height 11.5rem
+        max-height 12.3rem
 </style>

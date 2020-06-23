@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
-    "deploy": "bash deploy.sh",
+    "dep": "bash deploy.sh",
+    "bdp": "node utils/baiduPush.js https://www.bilent.top && bash baiduPush.sh",
     "editFm": "node utils/editFrontmatter.js"
   },
   "license": "MIT",
@@ -22,6 +23,7 @@
     "yamljs": "^0.3.0"
   },
   "dependencies": {
+    "js-striphtml": "^1.1.2",
     "vuepress-plugin-comment": "^0.7.3",
     "vuepress-plugin-fireworks": "^1.0.1",
     "vuepress-plugin-helper-live2d": "^1.0.2",

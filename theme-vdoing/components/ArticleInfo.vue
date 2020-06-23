@@ -18,9 +18,17 @@
       </ul>
       <div class="info">
         <div class="author iconfont icon-touxiang" title="作者" v-if="articleInfo.author">
-          <a :href="articleInfo.author.href" v-if="articleInfo.author.href" target="_blank" class="beLink" title="作者">{{articleInfo.author.name}}</a>
+          <a :href="articleInfo.author.href || articleInfo.author.link" v-if="articleInfo.author.href || articleInfo.author.link && typeof(articleInfo.author.link) === 'string'" target="_blank" class="beLink" title="作者">{{articleInfo.author.name}}</a>
           <a v-else href="javascript:;">{{articleInfo.author.name || articleInfo.author}}</a>
         </div>
+        <!-- test -->
+        <div class="author iconfont iconyuedu" style="font-size:0.9rem" title="字数" v-if="word.length !== 0">
+          <span style="font-size: 0.8rem">{{ word }}</span>
+        </div>
+        <div class="author iconfont iconcoffee" style="font-size:0.9rem" title="阅读时长" v-if="min.length !== 0">
+          <span style="font-size: 0.8rem">{{ min }}m</span>
+        </div>
+        <!-- test -->
         <div class="date iconfont icon-riqi" title="创建时间" v-if="articleInfo.date">
           <a href="javascript:;" >{{articleInfo.date}}</a>
         </div>
@@ -36,11 +44,14 @@
   
 <script>
 import encodeMixin from '../mixins/encodeUrl'
+import { wordcount, min2read } from '../util/wordcount'
 
 export default {
   mixins: [encodeMixin],
   data() {
     return {
+      word: '',
+      min: '',
       articleInfo: {}
     }
   },
@@ -51,6 +62,12 @@ export default {
     '$route.path'() {
       this.articleInfo = this.getPageInfo()
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.word = wordcount('.theme-vdoing-content')
+      this.min = min2read('.theme-vdoing-content')
+    })
   },
   methods: {
     getPageInfo() {

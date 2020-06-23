@@ -5,12 +5,8 @@
       <div class="banner-conent" :style="!homeData.features && !homeData.heroImage && `padding-top: 7rem`">
         <header class="hero">
           <img v-if="homeData.heroImage" :src="$withBase(homeData.heroImage)" :alt="homeData.heroAlt || 'hero'" />
-          <h1 v-if="homeData.heroText !== null" id="main-title">
-            {{ homeData.heroText || $title || 'Hello' }}
-          </h1>
-          <p class="description">
-            {{ homeData.tagline || $description || 'Welcome to your VuePress site' }}
-          </p>
+          <h1 v-if="homeData.heroText !== null" id="main-title">{{ homeData.heroText || $title || 'Hello' }}</h1>
+          <p class="description">{{ homeData.tagline || $description || 'Welcome to your VuePress site' }}</p>
           <p class="action" v-if="homeData.actionText && homeData.actionLink">
             <NavLink class="action-button" :item="actionLink" />
           </p>
@@ -91,7 +87,7 @@
             :perPage="perPage"
             :currentPage="currentPage"
             @getCurrentPage="handlePagination"
-            v-if="Math.ceil(total / perPage) > 1"
+            v-show="Math.ceil(total / perPage) > 1"
           />
         </template>
 
@@ -146,27 +142,18 @@ export default {
       currentPage: 1 // 当前页
     }
   },
-  components: {
-    NavLink,
-    MainLayout,
-    PostList,
-    UpdateArticle,
-    BloggerBar,
-    CategoriesBar,
-    TagsBar,
-    Pagination
-  },
+  components: { NavLink, MainLayout, PostList, UpdateArticle, BloggerBar, CategoriesBar, TagsBar, Pagination },
   created() {
     this.total = this.$sortPosts.length
   },
   beforeMount() {
     this.isMQMobile = window.innerWidth < MOBILE_DESKTOP_BREAKPOINT ? true : false // vupress在打包时不能在beforeCreate(),created()访问浏览器api（如window）
-
+  },
+  mounted() {
     if (this.$route.query.p) {
       this.currentPage = Number(this.$route.query.p)
     }
-  },
-  mounted() {
+
     if (this.isMQMobile && (!this.$route.query.p || this.$route.query.p == 1)) {
       this.init()
     }
@@ -297,7 +284,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .home-wrapper
   .banner
     width 100%
@@ -322,13 +309,13 @@ export default {
           margin 2rem auto 1.5rem
         h1
           margin 0
-          font-size 3.5rem
+          font-size 3.2rem
         .description, .action
           margin 1.5rem auto
 
         .description
           max-width 40rem
-          font-size 1.2rem
+          font-size 1.1rem
           line-height 1.3
           opacity .9
         .action-button
@@ -361,8 +348,8 @@ export default {
           // color lighten($bannerTextColor,10%)
           color inherit
           .feature-img
-            width 11rem
-            height 11rem
+            width 10rem
+            height 10rem
             animation heart 1.2s ease-in-out 0s infinite alternate
             animation-play-state paused
           h2
@@ -441,7 +428,7 @@ export default {
         margin-bottom 4rem
       .theme-vdoing-content
         padding 0 2rem
-        clear:both;
+        overflow hidden
         &>:first-child
           padding-top 2rem
         &>:last-child

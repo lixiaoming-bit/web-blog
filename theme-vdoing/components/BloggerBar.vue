@@ -54,7 +54,7 @@ export default {
       height 100%
       border-radius 3px
   .icons
-    // border 1px solid var(--borderColor)
+    border 1px solid var(--borderColor)
     border-top none
     height 40px
     line-height 40px
