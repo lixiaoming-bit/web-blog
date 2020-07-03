@@ -26,7 +26,7 @@
           <span style="font-size: 0.8rem">{{ word }}</span>
         </div>
         <div class="author iconfont iconcoffee" style="font-size:0.9rem" title="阅读时长" v-if="min.length !== 0">
-          <span style="font-size: 0.8rem">{{ min }}m</span>
+          <span style="font-size: 0.8rem">{{ min }}</span>
         </div>
         <!-- test -->
         <div class="date iconfont icon-riqi" title="创建时间" v-if="articleInfo.date">
