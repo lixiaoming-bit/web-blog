@@ -169,7 +169,7 @@ function flatten (items, res) {
 
 .page-nav-centre-wrap
   .page-nav-centre
-    position fixed
+    position absolute
     top 50%
     width 80px
     height 70px
@@ -178,7 +178,7 @@ function flatten (items, res) {
     transition all .2s
     border-radius 3px
     opacity .55
-    z-index 99
+    z-index 1
     @media (max-width: 1340px)
       width 50px
     @media (max-width: 960px) 

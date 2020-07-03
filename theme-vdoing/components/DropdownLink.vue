@@ -229,7 +229,8 @@ export default {
       white-space nowrap
       margin 0
   .nav-item .dropdown-title a
-    &:hover, &.router-link-active
-      margin-bottom -2px
-      border-bottom 2px solid lighten($accentColor, 8%)
+    // padding-bottom 5px
+    // margin-bottom 2px
+    // &:hover, &.router-link-active
+    //   border-bottom 2px solid lighten($accentColor, 8%)
 </style>

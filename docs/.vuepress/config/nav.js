@@ -21,6 +21,7 @@ module.exports = [
           { text: '《JavaScript教程》笔记', link: '/note/javascript/' },
           { text: '《ES6 教程》笔记', link: '/note/es6/' },
           { text: '《Vue》笔记', link: '/note/vue/' },
+          { text: '《JavaScript设计模式》', link: '/note/javascript-design/' },
           { text: '《TypeScript 从零实现 axios》', link: '/note/typescript-axios/' },
           { text: '小程序笔记', link: '/note/wx-miniprogram/' }
         ]
