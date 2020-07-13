@@ -88,7 +88,7 @@ module.exports = {
   },
   plugins: [
     // 插件
-    // ["fireworks"],
+    ["fireworks"],
     [
       "thirdparty-search",
       {
