@@ -1159,6 +1159,13 @@
   dependencies:
     cross-spawn "^6.0.5"
 
+"@vuepress/plugin-medium-zoom@^1.0.0-rc.1":
+  version "1.0.0-rc.1"
+  resolved "https://registry.npm.taobao.org/@vuepress/plugin-medium-zoom/download/@vuepress/plugin-medium-zoom-1.0.0-rc.1.tgz#78b81aad55621cf192667421eb73497cfe265068"
+  integrity sha1-eLgarVViHPGSZnQh63NJfP4mUGg=
+  dependencies:
+    medium-zoom "^0.4.0"
+
 "@vuepress/plugin-nprogress@1.5.2", "@vuepress/plugin-nprogress@^1.2.0":
   version "1.5.2"
   resolved "https://registry.npm.taobao.org/@vuepress/plugin-nprogress/download/@vuepress/plugin-nprogress-1.5.2.tgz#3be249ee070380d0aca2bd2fb62eab6b4e284d1b"
@@ -3665,6 +3672,11 @@ etag@~1.8.1:
   resolved "https://registry.npm.taobao.org/etag/download/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
 
+eve-raphael@0.5.0:
+  version "0.5.0"
+  resolved "https://registry.npm.taobao.org/eve-raphael/download/eve-raphael-0.5.0.tgz#17c754b792beef3fa6684d79cf5a47c63c4cda30"
+  integrity sha1-F8dUt5K+7z+maE15z1pHxjxM2jA=
+
 event-target-shim@^5.0.1:
   version "5.0.1"
   resolved "https://registry.npm.taobao.org/event-target-shim/download/event-target-shim-5.0.1.tgz#5d4d3ebdf9583d63a5333ce2deb7480ab2b05789"
@@ -3961,6 +3973,13 @@ find-up@^3.0.0:
   integrity sha1-SRafHXmTQwZG2mHsxa41XCHJe3M=
   dependencies:
     locate-path "^3.0.0"
+
+flowchart.js@^1.11.3:
+  version "1.13.0"
+  resolved "https://registry.npm.taobao.org/flowchart.js/download/flowchart.js-1.13.0.tgz#fd966270bd310ddefb168d6826c792c5f345372f"
+  integrity sha1-/ZZicL0xDd77Fo1oJseSxfNFNy8=
+  dependencies:
+    raphael "2.3.0"
 
 flush-write-stream@^1.0.0:
   version "1.1.1"
@@ -6044,6 +6063,11 @@ media-typer@0.3.0:
   resolved "https://registry.npm.taobao.org/media-typer/download/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
   integrity sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=
 
+medium-zoom@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.npm.taobao.org/medium-zoom/download/medium-zoom-0.4.0.tgz#8e13c9b754903c0c903220611af0d3cd373a4222"
+  integrity sha1-jhPJt1SQPAyQMiBhGvDTzTc6QiI=
+
 mem@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npm.taobao.org/mem/download/mem-1.1.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmem%2Fdownload%2Fmem-1.1.0.tgz#5edd52b485ca1d900fe64895505399a0dfa45f76"
@@ -7913,6 +7937,13 @@ range-parser@^1.2.1, range-parser@~1.2.1:
   version "1.2.1"
   resolved "https://registry.npm.taobao.org/range-parser/download/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha1-PPNwI9GZ4cJNGlW4SADC8+ZGgDE=
+
+raphael@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.npm.taobao.org/raphael/download/raphael-2.3.0.tgz#eabeb09dba861a1d4cee077eaafb8c53f3131f89"
+  integrity sha1-6r6wnbqGGh1M7gd+qvuMU/MTH4k=
+  dependencies:
+    eve-raphael "0.5.0"
 
 raw-body@2.4.0:
   version "2.4.0"
@@ -9856,10 +9887,17 @@ vuepress-plugin-demo-block@^0.7.2:
   resolved "https://registry.npm.taobao.org/vuepress-plugin-demo-block/download/vuepress-plugin-demo-block-0.7.2.tgz#02fc4f0ef764052981accf41f1403fdb9f794c0d"
   integrity sha1-AvxPDvdkBSmBrM9B8UA/2595TA0=
 
-vuepress-plugin-fireworks@^1.0.1:
+vuepress-plugin-fireworks@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npm.taobao.org/vuepress-plugin-fireworks/download/vuepress-plugin-fireworks-1.0.2.tgz#16a080359d8456509f8cad747a5ac7b876549037"
   integrity sha1-FqCANZ2EVlCfjK10elrHuHZUkDc=
+
+vuepress-plugin-flowchart@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.npm.taobao.org/vuepress-plugin-flowchart/download/vuepress-plugin-flowchart-1.4.3.tgz#1692807257c9ba02f764ced0caf930c627f65bdb"
+  integrity sha1-FpKAclfJugL3ZM7Qyvkwxif2W9s=
+  dependencies:
+    flowchart.js "^1.11.3"
 
 vuepress-plugin-helper-live2d@^1.0.2:
   version "1.0.2"
@@ -9898,13 +9936,6 @@ vuepress-plugin-thirdparty-search@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npm.taobao.org/vuepress-plugin-thirdparty-search/download/vuepress-plugin-thirdparty-search-1.0.2.tgz#1cb9307ae9e3b7925afa5b1f1e78b867bcdef588"
   integrity sha1-HLkweunjt5Ja+lsfHni4Z7ze9Yg=
-
-vuepress-plugin-zooming@^1.1.7:
-  version "1.1.7"
-  resolved "https://registry.npm.taobao.org/vuepress-plugin-zooming/download/vuepress-plugin-zooming-1.1.7.tgz#837440f607f8a1782376ac8d20918842ea373f30"
-  integrity sha1-g3RA9gf4oXgjdqyNIJGIQuo3PzA=
-  dependencies:
-    zooming "^2.1.1"
 
 vuepress-theme-vdoing@^1.0.0-beta.9:
   version "1.3.0"
@@ -10379,8 +10410,3 @@ zepto@^1.2.0:
   version "1.2.0"
   resolved "https://registry.npm.taobao.org/zepto/download/zepto-1.2.0.tgz#e127bd9e66fd846be5eab48c1394882f7c0e4f98"
   integrity sha1-4Se9nmb9hGvl6rSME5SIL3wOT5g=
-
-zooming@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.npm.taobao.org/zooming/download/zooming-2.1.1.tgz#3e05006b4e10335235ca626244d053d90a9c7e72"
-  integrity sha1-PgUAa04QM1I1ymJiRNBT2QqcfnI=

@@ -88,7 +88,8 @@ module.exports = {
   },
   plugins: [
     // 插件
-    ["fireworks"],
+    // [require('./plugins/fireworks')], //本地使用fireworks点击效果
+    ['flowchart'], // 流程图
     [
       "thirdparty-search",
       {
@@ -115,9 +116,7 @@ module.exports = {
         ],
       },
     ],
-
     "vuepress-plugin-baidu-autopush", // 百度自动推送
-
     [
       "one-click-copy",
       {
@@ -142,18 +141,19 @@ module.exports = {
       },
     ],
     [
-      "vuepress-plugin-zooming", // 放大图片
+      "@vuepress/medium-zoom", // 放大图片
       {
         selector: ".theme-vdoing-content img:not(.no-zoom)", // 排除class是no-zoom的图片
         options: {
-          bgColor: "rgba(0,0,0,0.6)",
+          // bgColor: "rgba(0,0,0,0.6)",
+          margin: 16
         },
       },
     ],
     [
       "vuepress-plugin-baidu-tongji", // 百度统计
       {
-        hm: "503f098e7e5b3a5b5d8c5fc2938af002",
+        hm: "70c7fc457095652531bc9e956c2f9366",
       },
     ],
     [
@@ -186,7 +186,7 @@ module.exports = {
           enable: false,
           // 模型名称(default: hibiki)>>>取值请参考：
           // https://github.com/JoeyBling/hexo-theme-yilia-plus/wiki/live2d%E6%A8%A1%E5%9E%8B%E5%8C%85%E5%B1%95%E7%A4%BA
-          model: "hijiki",
+          model: "epsilon2_1",
           display: {
             position: "left", // 显示位置：left/right(default: 'right')
             width: 135, // 模型的长度(default: 135)
