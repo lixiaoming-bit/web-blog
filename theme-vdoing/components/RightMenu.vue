@@ -3,12 +3,12 @@
     <div class="right-menu-margin">
       <div class="right-menu-content">
         <div
-            :class="['right-menu-item', 'level'+item.level, { active: item.slug === hashText }]"
-            v-for="(item, i) in headers"
-            :key="i"
-          >
-            <a :href="'#'+item.slug">{{item.title}}</a>
-          </div>
+          :class="['right-menu-item', 'level' + item.level, { active: item.slug === hashText }]"
+          v-for="(item, i) in headers"
+          :key="i"
+        >
+          <a :href="'#' + item.slug" :title="item.title">{{ item.title }}</a>
+        </div>
       </div>
     </div>
   </div>
@@ -43,11 +43,11 @@ export default {
 }
 </script>
 
-<style lang='stylus'>
+<style lang="stylus">
 
 .right-menu-wrapper
   width $rightMenuWidth
-  float right 
+  float right
   margin-right -($rightMenuWidth + 60px)
   position sticky
   top 0
@@ -67,8 +67,21 @@ export default {
     .right-menu-item
       padding 4px 15px
       border-left .2rem solid var(--borderColor)
+      &.level2
+        font-size 14px
+        a
+          opacity 1
+          overflow hidden
+          text-overflow ellipsis
+          white-space nowrap
       &.level3
+        font-size 12px
         padding-left 28px
+        a
+          opacity .65
+          overflow hidden
+          text-overflow ellipsis
+          white-space nowrap
       &.active
         border-color $accentColor
         a
@@ -76,13 +89,12 @@ export default {
           opacity 1
       a
         color var(--textColor)
-        opacity 0.75
         display block
         width ($rightMenuWidth - 30px)
         &:hover
           color $accentColor
 
-.have-body-img 
+.have-body-img
   .right-menu-wrapper
     .right-menu-margin
       padding .3rem 0

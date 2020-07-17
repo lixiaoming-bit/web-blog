@@ -231,9 +231,9 @@ export default {
         padding .8rem 0
         position absolute
         bottom 0rem
-        right 1.5rem
+        right 2.2rem
         background var(--mainBg)
-        border 1px solid var(--borderColor)
+        // border 1px solid var(--borderColor)
         width 120px
         border-radius 6px
         box-shadow 0 0 15px rgba(255,255,255,.2)
@@ -243,6 +243,7 @@ export default {
           font-size .95rem
           &:hover
             color $accentColor
+            background-color rgba(150,150,150,.2)
           &.active
             background-color rgba(150,150,150,.2)
             color $accentColor

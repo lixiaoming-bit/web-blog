@@ -6,20 +6,47 @@
           <router-link to="/" class="iconfont icon-home" title="首页" />
         </li>
         <li>
-          <router-link v-if="articleInfo.cataloguePermalink" :to="articleInfo.cataloguePermalink" :title="articleInfo.classify1+'-目录页'">{{articleInfo.classify1}}</router-link>
-          <router-link  v-else-if="$themeConfig.category !== false" :to="`/categories/?category=${articleInfo.classify1}`" title="分类">{{articleInfo.classify1}}</router-link>
+          <router-link
+            v-if="articleInfo.cataloguePermalink"
+            :to="articleInfo.cataloguePermalink"
+            :title="articleInfo.classify1 + '-目录页'"
+            >{{ articleInfo.classify1 }}</router-link
+          >
+          <router-link
+            v-else-if="$themeConfig.category !== false"
+            :to="`/categories/?category=${articleInfo.classify1}`"
+            title="分类"
+            >{{ articleInfo.classify1 }}</router-link
+          >
           <span v-else>{{ articleInfo.classify1 }}</span>
         </li>
         <li v-if="articleInfo.classify2">
-          <router-link v-if="articleInfo.cataloguePermalink" :to="articleInfo.cataloguePermalink + '/#' + encodeUrl(articleInfo.classify2)" :title="articleInfo.classify1+'#'+articleInfo.classify2">{{articleInfo.classify2}}</router-link>
-          <router-link  v-else-if="$themeConfig.category !== false" :to="`/categories/?category=${articleInfo.classify2}`" title="分类">{{articleInfo.classify2}}</router-link>
-          <span v-else>{{articleInfo.classify2}}</span>
+          <router-link
+            v-if="articleInfo.cataloguePermalink"
+            :to="articleInfo.cataloguePermalink + '/#' + encodeUrl(articleInfo.classify2)"
+            :title="articleInfo.classify1 + '#' + articleInfo.classify2"
+            >{{ articleInfo.classify2 }}</router-link
+          >
+          <router-link
+            v-else-if="$themeConfig.category !== false"
+            :to="`/categories/?category=${articleInfo.classify2}`"
+            title="分类"
+            >{{ articleInfo.classify2 }}</router-link
+          >
+          <span v-else>{{ articleInfo.classify2 }}</span>
         </li>
       </ul>
       <div class="info">
         <div class="author iconfont icon-touxiang" title="作者" v-if="articleInfo.author">
-          <a :href="articleInfo.author.href || articleInfo.author.link" v-if="articleInfo.author.href || articleInfo.author.link && typeof(articleInfo.author.link) === 'string'" target="_blank" class="beLink" title="作者">{{articleInfo.author.name}}</a>
-          <a v-else href="javascript:;">{{articleInfo.author.name || articleInfo.author}}</a>
+          <a
+            :href="articleInfo.author.href || articleInfo.author.link"
+            v-if="articleInfo.author.href || (articleInfo.author.link && typeof articleInfo.author.link === 'string')"
+            target="_blank"
+            class="beLink"
+            title="作者"
+            >{{ articleInfo.author.name }}</a
+          >
+          <a v-else href="javascript:;">{{ articleInfo.author.name || articleInfo.author }}</a>
         </div>
         <!-- test -->
         <div class="author iconfont iconyuedu" style="font-size:0.9rem" title="字数" v-if="word.length !== 0">
@@ -30,18 +57,30 @@
         </div>
         <!-- test -->
         <div class="date iconfont icon-riqi" title="创建时间" v-if="articleInfo.date">
-          <a href="javascript:;" >{{articleInfo.date}}</a>
+          <a href="javascript:;">{{ articleInfo.date }}</a>
         </div>
-        <div class="date iconfont icon-wenjian" title="分类" v-if="$themeConfig.category !== false && !(articleInfo.classify1 && articleInfo.classify1 !== '_posts') && articleInfo.categories">
-          <router-link :to="`/categories/?category=${item}`" v-for="(item, index) in articleInfo.categories" :key="index">
-            {{item}}
+        <div
+          class="date iconfont icon-wenjian"
+          title="分类"
+          v-if="
+            $themeConfig.category !== false &&
+              !(articleInfo.classify1 && articleInfo.classify1 !== '_posts') &&
+              articleInfo.categories
+          "
+        >
+          <router-link
+            :to="`/categories/?category=${item}`"
+            v-for="(item, index) in articleInfo.categories"
+            :key="index"
+          >
+            {{ item }}
           </router-link>
         </div>
       </div>
     </div>
   </div>
 </template>
-  
+
 <script>
 import encodeMixin from '../mixins/encodeUrl'
 import { wordcount, min2read } from '../util/wordcount'
@@ -61,6 +100,10 @@ export default {
   watch: {
     '$route.path'() {
       this.articleInfo = this.getPageInfo()
+      this.$nextTick(() => {
+        this.word = wordcount('.theme-vdoing-content')
+        this.min = min2read('.theme-vdoing-content')
+      })
     }
   },
   mounted() {
@@ -79,10 +122,10 @@ export default {
       const relativePathArr = relativePath.split('/')
       const classifyArr = relativePathArr[0].split('.')
       const classify1 = classifyArr.length > 1 ? classifyArr[1] : classifyArr[0] // 文章一级分类名称
-      const classify2 = relativePathArr.length > 2 ? relativePathArr[1].split('.')[1] : undefined// 文章二级分类名称
+      const classify2 = relativePathArr.length > 2 ? relativePathArr[1].split('.')[1] : undefined // 文章二级分类名称
 
-      const cataloguePermalink = sidebar && sidebar.catalogue ? sidebar.catalogue[classify1] : undefined// 目录页永久链接
-      
+      const cataloguePermalink = sidebar && sidebar.catalogue ? sidebar.catalogue[classify1] : undefined // 目录页永久链接
+
       const author = this.$frontmatter.author || this.$themeConfig.author // 作者
       let date = (pageInfo.frontmatter.date || '').split(' ')[0] // 文章创建时间
 
@@ -102,7 +145,7 @@ export default {
 }
 </script>
 
-<style lang='stylus' scoped>
+<style lang="stylus" scoped>
 @require '../styles/wrapper.styl'
 
 .articleInfo-wrap
