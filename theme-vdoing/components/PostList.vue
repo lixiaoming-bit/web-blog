@@ -52,9 +52,11 @@
             </span>
           </div>
         </div>
-        <div class="excerpt-wrapper" v-if="item.excerpt">
-          <div class="excerpt" v-html="item.excerpt"></div>
-          <router-link :to="item.path" class="readmore iconfont icon-jiantou-you">
+        <div class="excerpt-wrapper" >
+          <router-link :to="item.path" v-if="item.excerpt">
+            <div class="excerpt" v-html="item.excerpt"></div>
+          </router-link>
+          <router-link :to="item.path" class="readmore iconfont icon-jiantou-you" v-else>
             阅读全文
           </router-link>
         </div>
@@ -205,6 +207,7 @@ export default {
         h1,h2,h3
           display none
         img
+          width 100%
           max-height 280px
           max-width 100%!important
           margin 0 auto
