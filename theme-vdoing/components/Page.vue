@@ -2,35 +2,28 @@
   <div>
     <main class="page">
       <slot name="top" />
-      
+
       <div class="theme-vdoing-wrapper">
-        
         <ArticleInfo v-if="isArticle()" />
         <component class="theme-vdoing-content" v-if="pageComponent" :is="pageComponent" />
 
         <div class="content-wrapper">
-          <RightMenu v-if="showRightMenu"/>
+          <RightMenu v-if="showRightMenu" />
           <h1 v-if="showTitle">
-            <img :src="currentBadge" v-if="$themeConfig.titleBadge === false ? false : true">
-            {{this.$page.title}}
+            <img :src="currentBadge" v-if="$themeConfig.titleBadge === false ? false : true" />
+            {{ this.$page.title }}
           </h1>
           <Content class="theme-vdoing-content" />
         </div>
-        
 
         <PageEdit />
         <PageNav v-bind="{ sidebarItems }" />
       </div>
 
-      <UpdateArticle
-        :length="3"
-        :moreArticle="updateBarConfig && updateBarConfig.moreArticle"
-        v-if="isShowUpdateBar"
-      />
+      <UpdateArticle :length="3" :moreArticle="updateBarConfig && updateBarConfig.moreArticle" v-if="isShowUpdateBar" />
 
       <slot name="bottom" />
     </main>
-  
   </div>
 </template>
 
@@ -52,21 +45,54 @@ export default {
     }
   },
   props: ['sidebarItems'],
-  components: { PageEdit, PageNav, ArticleInfo, Catalogue, UpdateArticle, RightMenu},
+  components: { PageEdit, PageNav, ArticleInfo, Catalogue, UpdateArticle, RightMenu },
   created() {
+    this.$nextTick(() => {
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate')
+            observer.unobserve(entry.target)
+          }
+        })
+      })
+      document.querySelectorAll('.theme-vdoing-content strong').forEach(strong => {
+        observer.observe(strong)
+      })
+    })
     this.updateBarConfig = this.$themeConfig.updateBar
+  },
+  watch: {
+    '$route.path'() {
+      this.$nextTick(() => {
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate')
+              observer.unobserve(entry.target)
+            }
+          })
+        })
+        document.querySelectorAll('.theme-vdoing-content strong').forEach(strong => {
+          observer.observe(strong)
+        })
+      })
+    }
   },
   computed: {
     isShowUpdateBar() {
-      return this.updateBarConfig && this.updateBarConfig.showToArticle === false ? false : true 
+      return this.updateBarConfig && this.updateBarConfig.showToArticle === false ? false : true
     },
     showTitle() {
       return !this.$frontmatter.pageComponent
     },
-    showRightMenu(){
-      return this.$page.headers && (this.$frontmatter && this.$frontmatter.sidebar && this.$frontmatter.sidebar !== false) !== false
+    showRightMenu() {
+      return (
+        this.$page.headers &&
+        (this.$frontmatter && this.$frontmatter.sidebar && this.$frontmatter.sidebar !== false) !== false
+      )
     },
-    pageComponent () {
+    pageComponent() {
       return this.$frontmatter.pageComponent ? this.$frontmatter.pageComponent.name : false
     }
   },
@@ -97,14 +123,14 @@ export default {
     margin-bottom -0.2rem
     max-width 2.2rem
     max-height 2.2rem
-  
+
 
 /**
  * 右侧菜单的自适应
  */
 @media (min-width: 720px) and (max-width: 1519px)
   .have-rightmenu
-    .page 
+    .page
       padding-right 0!important
 
 @media (max-width: 1519px)
@@ -113,5 +139,4 @@ export default {
 @media (min-width: 1520px)
   .sidebar .sidebar-sub-headers
     display none
-
 </style>
