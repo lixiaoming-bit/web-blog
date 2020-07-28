@@ -32,7 +32,7 @@
     <Buttons ref="buttons" @toggle-theme-mode="toggleThemeMode" />
 
     <BodyBgImg v-if="$themeConfig.bodyBgImg" />
-    <APlayer />
+    <APlayer v-if="$themeConfig.music" />
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 const nav = require("./config/nav.js")
-
+const music = require('./config/music.js')
 module.exports = {
   title: "Mr.bilent",
   description: "前端博客，web学习与总结。JavaScript、ES6、TypeScript、Vue、CSS3、HTML5、Node、Git、工具类等技术文章。", // 描述,以 <meta> 标签渲染到页面html中
@@ -23,7 +23,8 @@ module.exports = {
   // theme: 'vdoing', // 使用依赖包主题
   theme: require.resolve("../../theme-vdoing"), // 使用本地主题
   themeConfig: {
-    // 主题配置
+    // music control
+    music,
     nav,
     sidebarDepth: 2, // 侧边栏显示深度，默认1，最大2（显示到h3标题）
     logo: "/img/logo.png", // 导航栏logo
@@ -84,7 +85,7 @@ module.exports = {
       // 页脚信息
       createYear: 2019, // 博客创建年份
       copyrightInfo: "人不疯〃难成功 | MIT License", // 博客版权信息，支持a标签
-    },
+    }
   },
   plugins: [
     // 插件
