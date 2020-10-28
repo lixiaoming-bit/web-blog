@@ -32,7 +32,6 @@
     <Buttons ref="buttons" @toggle-theme-mode="toggleThemeMode" />
 
     <BodyBgImg v-if="$themeConfig.bodyBgImg" />
-    <APlayer v-if="$themeConfig.music" />
   </div>
 </template>
 
@@ -47,7 +46,6 @@ import Sidebar from '@theme/components/Sidebar'
 import Buttons from '@theme/components/Buttons'
 import Footer from '@theme/components/Footer'
 import BodyBgImg from '@theme/components/BodyBgImg'
-import APlayer from '@theme/components/APlayer'
 import { resolveSidebarItems } from '../util'
 import storage from 'good-storage' // 本地存储
 import _ from 'lodash'
@@ -66,8 +64,7 @@ export default {
     Sidebar,
     Footer,
     Buttons,
-    BodyBgImg,
-    APlayer
+    BodyBgImg
   },
 
   data() {
